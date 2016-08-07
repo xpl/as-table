@@ -47,7 +47,7 @@ qwert | 12    | zxcv
 qwert | 12345 | z
 ```
 
-Or you can do this:
+Obtaining pre-configured function:
 
 ```javascript
 asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' })
