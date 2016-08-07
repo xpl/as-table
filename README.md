@@ -30,9 +30,6 @@ asTable ([['qwe',       '123456789', 'zxcvbnm'],
           ['qwerty',    '12',        'zxcvb'],
           ['qwertyiop', '1234567',   'z']])
 ```
-
-Will output:
-
 ```
 qwe        123456789  zxcvbnm
 qwerty     12         zxcvb
