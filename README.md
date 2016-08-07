@@ -1,6 +1,6 @@
 # as-table
 
-A simple function that print objects as ASCII tables. Installing:
+A simple function that print objects as ASCII tables.
 
 ```bash
 npm install as-table
