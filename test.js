@@ -44,4 +44,14 @@ describe ('as-table', () => {
 
         assert.equal (asTable ([['fooo\n\nbar']]), 'fooo\\n\\nbar')
     })
+
+    it ('configuring works', () => {
+
+        const asTable25      = asTable.configure ({ maxTotalWidth: 25 }),
+              asTable25Delim = asTable25.configure ({ delimiter: ' | ' })
+
+        assert.notEqual (asTable25, asTable25Delim)
+        assert.equal    (asTable25.maxTotalWidth, 25)
+        assert.equal    (asTable25Delim.delimiter, ' | ')
+    })
 })

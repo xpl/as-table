@@ -51,8 +51,7 @@ asColumns = (rows, cfg_) => {
     }
 },
 
-configure = cfg =>
-            arr => {
+asTable = cfg => O.assign (arr => {
 
 /*  Print arrays  */
 
@@ -66,8 +65,12 @@ configure = cfg =>
           lines    = asColumns (columns, O.assign ({ minColumnWidths: colNames.map (n => n.length) }, cfg))
 
     return [lines[0], '-'.repeat (lines[0].length), ...lines.slice (1)].join ('\n')
-}
 
-module.exports = O.assign (configure ({ maxTotalWidth: 120 }), { configure: configure })
+}, cfg, {
+
+    configure: newConfig => asTable (O.assign ({}, cfg, newConfig)),
+})
+
+module.exports = asTable ({ maxTotalWidth: 120 })
 
 
