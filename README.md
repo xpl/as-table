@@ -1,6 +1,12 @@
 # as-table
 
-A simple function that print objects as ASCII tables.
+A simple function that print objects as ASCII tables. Installing:
+
+```bash
+npm install as-table
+```
+
+Printing objects:
 
 ```javascript
 asTable = require ('as-table')

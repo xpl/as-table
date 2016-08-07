@@ -1,7 +1,7 @@
 {
   "name": "as-table",
   "version": "1.0.1",
-  "description": "A simple function to print objects as ASCII tables (i.e. in columns)",
+  "description": "A simple function to print objects as ASCII tables",
   "main": "as-table.js",
   "scripts": {
     "test": "./node_modules/.bin/supervisor -n exit -x ./node_modules/.bin/mocha -- --reporter spec"
