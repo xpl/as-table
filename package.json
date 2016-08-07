@@ -1,0 +1,22 @@
+{
+  "name": "as-table",
+  "version": "1.0.0",
+  "description": "A simple function to print objects as ASCII tables (i.e. in columns)",
+  "main": "as-table.js",
+  "scripts": {
+    "test": "./node_modules/.bin/supervisor -n exit -x ./node_modules/.bin/mocha -- --reporter spec"
+  },
+  "keywords": [
+    "ASCII",
+    "table",
+    "columns",
+    "stringify",
+    "print object"
+  ],
+  "author": "Vitaly Gordon <rocket.mind@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "supervisor": "^0.11.0"
+  }
+}
