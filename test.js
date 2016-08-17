@@ -1,7 +1,7 @@
 "use strict";
 
 const assert  = require ('assert'),
-      asTable = require ('as-table')
+      asTable = require ('./as-table')
 
 describe ('as-table', () => {
 
@@ -54,4 +54,12 @@ describe ('as-table', () => {
         assert.equal    (asTable25.maxTotalWidth, 25)
         assert.equal    (asTable25Delim.delimiter, ' | ')
     })
+
+    it ('degenerate case works', () => {
+
+        assert.equal (asTable ([]), '\n')
+    })
 })
+
+
+

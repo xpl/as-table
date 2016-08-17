@@ -4,7 +4,7 @@
   "description": "A simple function to print objects as ASCII tables",
   "main": "as-table.js",
   "scripts": {
-    "test": "./node_modules/.bin/supervisor -n exit -x ./node_modules/.bin/mocha -- --reporter spec"
+    "test": "./node_modules/.bin/mocha --reporter spec --watch"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/xpl/as-table",
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "supervisor": "^0.11.0"
+    "mocha": "^2.4.5"
   }
 }
