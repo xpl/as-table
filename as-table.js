@@ -4,6 +4,8 @@ const
 
 O = Object,
 
+limit = (s, n) => s && ((s.length <= n) ? s : (s.substr (0, n - 1) + '…')),
+
 asColumns = (rows, cfg_) => {
     
     if (rows.length === 0) {
@@ -33,7 +35,7 @@ asColumns = (rows, cfg_) => {
 
         totalWidth      = maxWidths.reduce ((a, b) => a + b, 0),
         relativeWidths  = maxWidths.map (w => w / totalWidth),
-        maxTotalWidth   = cfg.maxTotalWidth - (cfg.delimiter.length * maxWidths.length),
+        maxTotalWidth   = cfg.maxTotalWidth - (cfg.delimiter.length * (maxWidths.length - 1)),
         excessWidth     = Math.max (0, totalWidth - maxTotalWidth),
         computedWidths  = zip ([cfg.minColumnWidths, maxWidths, relativeWidths],
                             (min, max, relative) => Math.max (min, Math.floor (max - excessWidth * relative))),
@@ -47,7 +49,7 @@ asColumns = (rows, cfg_) => {
         return zip ([cells, restCellWidths], (a, b) =>
                 zip ([a, b], (str, w) => (w >= 0)
                                             ? (str + ' '.repeat (w))
-                                            : (str.slice (0, w))).join (cfg.delimiter))
+                                            : (limit (str, str.length + w))).join (cfg.delimiter))
     }
 },
 
@@ -60,9 +62,9 @@ asTable = cfg => O.assign (arr => {
 
 /*  Print objects   */
 
-    const colNames = [...new Set (arr.map (O.keys).reduce ((a, b) => [...a, ...b], []))],
-          columns  = [colNames, ...arr.map (o => colNames.map (key => o[key]))],
-          lines    = asColumns (columns, O.assign ({ minColumnWidths: colNames.map (n => n.length) }, cfg))
+    const colNames        = [...new Set ([].concat (...arr.map (O.keys)))],
+          columns         = [colNames, ...arr.map (o => colNames.map (key => o[key]))],
+          lines           = asColumns (columns, cfg)
 
     return [lines[0], '-'.repeat (lines[0].length), ...lines.slice (1)].join ('\n')
 
@@ -71,6 +73,6 @@ asTable = cfg => O.assign (arr => {
     configure: newConfig => asTable (O.assign ({}, cfg, newConfig)),
 })
 
-module.exports = asTable ({ maxTotalWidth: 120 })
+module.exports = asTable ({ maxTotalWidth: Number.MAX_SAFE_INTEGER })
 
 

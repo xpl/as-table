@@ -17,11 +17,11 @@ describe ('as-table', () => {
                         'qwerty     12         zxcvb  \n' +
                         'qwertyiop  1234567    z      ')
 
-        assert.equal (asTable.configure ({ maxTotalWidth: 25, delimiter: ' | ' }) (testData),
+        assert.equal (asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (testData),
 
-                        'qwe   | 12345 | zxcv\n' +
-                        'qwert | 12    | zxcv\n' +
-                        'qwert | 12345 | z   ')
+                        'qwe   | 1234… | zxc…\n' +
+                        'qwer… | 12    | zxc…\n' +
+                        'qwer… | 1234… | z   ')
     })
 
     it ('object printing works', () => {
@@ -38,7 +38,22 @@ describe ('as-table', () => {
             'true   abcde       42 \n' +
             'false  qwertyuiop  43 \n' +
             '       null        44 ')
-    }),
+    })
+
+    it ('maxTotalWidth correctly handles object field names', () => {
+
+        assert.equal (
+
+            asTable.configure ({ maxTotalWidth: 15 }) ([{
+
+                '0123456789': '0123456789',
+                'abcdefxyzw': 'abcdefxyzw' }]),
+
+            '01234…  abcde…\n' +
+            '--------------\n' +
+            '01234…  abcde…'
+        )
+    })
 
     it ('everything renders as singleline', () => {
 
