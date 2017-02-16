@@ -39,12 +39,12 @@ qwertyiop  1234567    z
 Limiting total width by proportionally trimming cells + setting columns delimiter:
 
 ```javascript
-asTable.configure ({ maxTotalWidth: 25, delimiter: ' | ' }) (data)
+asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (data)
 ```
 ```
-qwe   | 12345 | zxcv
-qwert | 12    | zxcv
-qwert | 12345 | z
+qwe   | 1234… | zxc…
+qwer… | 12    | zxc…
+qwer… | 1234… | z   
 ```
 
 Obtaining pre-configured function:
