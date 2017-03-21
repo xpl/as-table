@@ -47,6 +47,20 @@ qwer… | 12    | zxc…
 qwer… | 1234… | z   
 ```
 
+Providing custom object printer:
+
+```javascript
+asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) }) (data)
+```
+```
+foo  string      num
+--------------------
+yes  abcde       42 
+no   qwertyuiop  43 
+     null        44 
+```
+
+
 Obtaining pre-configured function:
 
 ```javascript

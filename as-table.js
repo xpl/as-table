@@ -17,7 +17,7 @@ asColumns = (rows, cfg_) => {
 
     /*  Convert cell data to string (converting multiline text to singleline) */
 
-        cells           = rows.map (r => r.map (c => (c === undefined) ? '' : String (c).replace (/\n/g, '\\n'))),
+        cells           = rows.map (r => r.map (c => (c === undefined) ? '' : cfg_.print (c).replace (/\n/g, '\\n'))),
 
     /*  Compute column widths (per row) and max widths (per column)     */
 
@@ -73,6 +73,6 @@ asTable = cfg => O.assign (arr => {
     configure: newConfig => asTable (O.assign ({}, cfg, newConfig)),
 })
 
-module.exports = asTable ({ maxTotalWidth: Number.MAX_SAFE_INTEGER })
+module.exports = asTable ({ maxTotalWidth: Number.MAX_SAFE_INTEGER, print: String })
 
 

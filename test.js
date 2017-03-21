@@ -74,6 +74,26 @@ describe ('as-table', () => {
 
         assert.equal (asTable ([]), '\n')
     })
+
+    it ('custom printer works', () => {
+
+        var testData =
+            [ { foo: true,  string: 'abcde',      num: 42 },
+              { foo: false, string: 'qwertyuiop', num: 43 },
+              {             string:  null,        num: 44 } ]
+
+        const formatsBooleansAsYesNo = asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) })
+
+        assert.equal (formatsBooleansAsYesNo (testData),
+
+            'foo  string      num\n' +
+            '--------------------\n' +
+            'yes  abcde       42 \n' +
+            'no   qwertyuiop  43 \n' +
+            '     null        44 ')
+    })
+
+
 })
 
 
