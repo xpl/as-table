@@ -8,7 +8,7 @@ A simple function that print objects as ASCII tables. Supports ANSI styling (esc
 npm install as-table
 ```
 
-Printing objects:
+# Printing objects
 
 ```javascript
 asTable = require ('as-table')
@@ -25,7 +25,7 @@ false  qwertyuiop  43
        null        44 
 ```
 
-Printing arrays:
+## Printing arrays
 
 ```javascript
 asTable ([['qwe',       '123456789', 'zxcvbnm'],
@@ -38,7 +38,7 @@ qwerty     12         zxcvb
 qwertyiop  1234567    z
 ```
 
-Limiting total width by proportionally trimming cells + setting columns delimiter:
+## Limiting total width by proportionally trimming cells + setting columns delimiter
 
 ```javascript
 asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (data)
@@ -49,7 +49,7 @@ qwer… | 12    | zxc…
 qwer… | 1234… | z   
 ```
 
-Providing custom object printer:
+## Providing custom object printer
 
 ```javascript
 asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) }) (data)
@@ -62,7 +62,7 @@ no   qwertyuiop  43
      null        44 
 ```
 
-Obtaining pre-configured function:
+## Obtaining pre-configured function
 
 ```javascript
 asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' })
@@ -70,7 +70,7 @@ asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' 
 asTable (data)
 ```
 
-Customizing title rendering and header separator:
+## Customizing title rendering and header separator
 
 ```javascript
 asTable = require ('as-table').configure ({ title: x => x.bright, delimiter: ' | '.dim.cyan, dash: '-'.bright.cyan })
