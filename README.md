@@ -1,6 +1,6 @@
 # as-table
 
-[![Build Status](https://travis-ci.org/xpl/as-table.svg?branch=master)](https://travis-ci.org/xpl/as-table) [![Coverage Status](https://coveralls.io/repos/github/xpl/as-table/badge.svg)](https://coveralls.io/github/xpl/as-table) [![npm](https://img.shields.io/npm/v/as-table.svg)](https://npmjs.com/package/as-table) [![dependencies status](https://david-dm.org/xpl/as-table/dep-status.svg)](https://david-dm.org/xpl/as-table) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/xpl/as-table.svg)](https://scrutinizer-ci.com/g/xpl/as-table/?branch=master)
+[![Build Status](https://travis-ci.org/xpl/as-table.svg?branch=master)](https://travis-ci.org/xpl/as-table) [![Coverage Status](https://coveralls.io/repos/github/xpl/as-table/badge.svg)](https://coveralls.io/github/xpl/as-table) [![npm](https://img.shields.io/npm/v/as-table.svg)](https://npmjs.com/package/as-table) [![dependencies Status](https://david-dm.org/xpl/as-table/status.svg)](https://david-dm.org/xpl/as-table) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/xpl/as-table.svg)](https://scrutinizer-ci.com/g/xpl/as-table/?branch=master)
 
 A simple function that print objects as ASCII tables. Supports ANSI styling (escape codes won't break the layout), thanks to [`printable-characters`](https://github.com/xpl/printable-characters).
 
