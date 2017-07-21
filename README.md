@@ -72,7 +72,7 @@ asTable (data)
 
 Customizing title rendering and header separator:
 
-```
+```javascript
 asTable = require ('as-table').configure ({ title: x => x.bright, delimiter: ' | '.dim.cyan, dash: '-'.bright.cyan })
 
 console.log (
