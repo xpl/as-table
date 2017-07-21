@@ -69,3 +69,15 @@ asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' 
 
 asTable (data)
 ```
+
+Customizing title rendering and header separator:
+
+```
+asTable = require ('as-table').configure ({ title: x => x.bright, delimiter: ' | '.dim.cyan, dash: '-'.bright.cyan })
+
+console.log (
+   asTable ([ { foo: true,  string: 'abcde',                             num: 42 },
+              { foo: false, string: 'qwertyuiop'.bgMagenta.green.bright, num: 43 } ])
+```
+
+<img width="179" alt="screen shot 2017-07-21 at 23 46 14" src="https://user-images.githubusercontent.com/1707/28481945-dcb0f8d6-6e6e-11e7-896e-dfad40662daf.png">
