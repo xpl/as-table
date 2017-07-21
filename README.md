@@ -8,7 +8,7 @@ A simple function that print objects as ASCII tables. Supports ANSI styling (esc
 npm install as-table
 ```
 
-# Printing objects
+## Printing objects
 
 ```javascript
 asTable = require ('as-table')
