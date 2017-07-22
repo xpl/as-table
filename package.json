@@ -1,7 +1,7 @@
 {
   "name": "as-table",
   "version": "1.0.15",
-  "description": "A simple function to print objects as ASCII tables",
+  "description": "A simple function that print objects as ASCII tables. Supports ANSI styling, escape codes won't break the layout.",
   "main": "as-table.js",
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --reporter spec",
