@@ -1,13 +1,13 @@
 language: node_js
 node_js:
-  - "node"
+- node
 script:
-  - npm run lint
-  - npm run lint-test
-  - npm test
+- npm run lint
+- npm run lint-test
+- npm test
 after_success: npm run coverage
 deploy:
   provider: npm
-  email: "rocket.mind@gmail.com"
+  email: rocket.mind@gmail.com
   api_key:
-    secure: QNFnaKIkbbcCuAqO1MkCxmgP7wXUlO6+G6GI56MD+Pg+mRdAHTSuNly8e9LOGioka4ouFBpDSBTuFsHNsoVvrtONzWALajloglewjGth8NaszQ2+8STAC5QdL+L2OokqTB8LU1C7CgZJTQBbGODRMET8O5iYUYbYebar15hTudgXJOKT4irh9/NN9LyOJl993VOXDSOLDhos8pM2n5hTIexotoHGTvurXI7BEwPKPwpCXk2wHuOuAXERfC5h8zvxjvQGJssGuYIFjLl+V8JYsjUS3b7doyGdokv+jUfX6R15i55eXG2dLZApkvXhEvHETN/FtrebfnVIntfZlOVElHQY8xhud4grxQMSD8yOGTA+K16j7k/5ZfBye9qRMcNDynXh2jA7epw0EvNUuiyHlqnqxEXnMbrWhdxfTw9eESZ1wzEFvKty8VFBHX9SZAfIqm3W2Job7Kd4RJD+bVXDdRcExBPdcuuuyUJaMhNc6maulmb5vBFsZw/xnqH1rOYJeXefDrvl7oSBIHTDWrXs3eFC/hTp7GnE7drVTDgbIAiViPefULIm8Jj6pGLG7WKQKfVo4X21o6iXhLOgYWbWwdRFR4rYZFK2IFn4rlHimZr/axGtvxwOVzjZKWNOOWLx1jbtutcJsZzvS3qjXCxnrpIKsNeJqdPYZ7u20dpaA8g=
+    secure: arKawgGrXQDVvc4Dr3iceQHgOmHbHaNBXlOJGzZhCUeIcfLHbFiAtk0r5qBSUoRNtB/wZCJYZUk5hDtGFjnrtJa6GZmLg8EZmAgq1JlOzuXcPgTXkPL51mkUj4xzeuqUZ2ywvpOQnxPJ0lIdrH7dA7PgSsu0XG+G0kHOGy6w8GW/gykz1CrkKN1NlAaCvPpY7lYr/xJQ51OIVVOwjseDRL2LBshLZcdxzH1pkZWmvCqCwz/M40ELHPTL1hEUpc4YXMXw1LaNumTVvRxLcScyZ7YpFdgef3+AQosmNOCgYUwyRPr5RmTEs7CypCS4UbtmBJDnJuwDBVC5ZfesVo5U1553y9I2vLE5nQxqJnsjWUjmgsWPGBLbgo7O5Gw+x3M2mKvUKJ/E6U+rG/BA240pcHJeCLwHKZlU1qeYKH6/Oec++/mWKIOElx05/bZDhSvJhHdwKSeVRhPEJXygiim0u6ZK+H5868bo76O1J3Aib/Ap4ir01gjAWSrrR5rdyUnPcZuSs4Ka4raVYxwSaeMyLLcVMjmWjeS6nHF5tSd0md9UW1YRIPGgl6vN7Kp+pld+QmlT7+/E+Yuqa2ZRxb+flw5ccHH/2Dg71hrr2iOCQSPF9N1HO08NeEmaRrB7F/xsdvY1iZQp31gyVB7i+/P8oox89g06rDn0ApS6i7NnQoY=
