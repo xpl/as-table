@@ -1,6 +1,6 @@
 # as-table
 
-[![Build Status](https://travis-ci.org/xpl/as-table.svg?branch=master)](https://travis-ci.org/xpl/as-table) [![Coverage Status](https://coveralls.io/repos/github/xpl/as-table/badge.svg)](https://coveralls.io/github/xpl/as-table) [![npm](https://img.shields.io/npm/v/as-table.svg)](https://npmjs.com/package/as-table) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/xpl/as-table.svg)](https://scrutinizer-ci.com/g/xpl/as-table/?branch=master) [![dependencies Status](https://david-dm.org/xpl/as-table/status.svg)](https://david-dm.org/xpl/as-table) [![devDependencies Status](https://david-dm.org/xpl/as-table/dev-status.svg)](https://david-dm.org/xpl/as-table?type=dev)
+[![Build Status](https://travis-ci.org/xpl/as-table.svg?branch=master)](https://travis-ci.org/xpl/as-table) [![Coverage Status](https://coveralls.io/repos/github/xpl/as-table/badge.svg)](https://coveralls.io/github/xpl/as-table) [![npm](https://img.shields.io/npm/v/as-table.svg)](https://npmjs.com/package/as-table) [![dependencies Status](https://david-dm.org/xpl/as-table/status.svg)](https://david-dm.org/xpl/as-table) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/xpl/as-table.svg)](https://scrutinizer-ci.com/g/xpl/as-table/?branch=master)
 
 A simple function that print objects as ASCII tables. Supports ANSI styling (escape codes won't break the layout), thanks to [`printable-characters`](https://github.com/xpl/printable-characters).
 
@@ -8,7 +8,7 @@ A simple function that print objects as ASCII tables. Supports ANSI styling (esc
 npm install as-table
 ```
 
-Printing objects:
+## Printing objects
 
 ```javascript
 asTable = require ('as-table')
@@ -25,7 +25,7 @@ false  qwertyuiop  43
        null        44 
 ```
 
-Printing arrays:
+## Printing arrays
 
 ```javascript
 asTable ([['qwe',       '123456789', 'zxcvbnm'],
@@ -38,7 +38,7 @@ qwerty     12         zxcvb
 qwertyiop  1234567    z
 ```
 
-Limiting total width by proportionally trimming cells + setting columns delimiter:
+## Limiting total width by proportionally trimming cells + setting columns delimiter
 
 ```javascript
 asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (data)
@@ -49,7 +49,7 @@ qwer… | 12    | zxc…
 qwer… | 1234… | z   
 ```
 
-Providing custom object printer:
+## Providing custom object printer
 
 ```javascript
 asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) }) (data)
@@ -62,7 +62,7 @@ no   qwertyuiop  43
      null        44 
 ```
 
-Obtaining pre-configured function:
+## Obtaining pre-configured function
 
 ```javascript
 asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' })
@@ -70,9 +70,11 @@ asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' 
 asTable (data)
 ```
 
-Customizing title rendering and header separator:
+## Customizing title rendering and header separator
 
-```
+With string coloring by [`ansicolor`](https://github.com/xpl/ansicolor):
+
+```javascript
 asTable = require ('as-table').configure ({ title: x => x.bright, delimiter: ' | '.dim.cyan, dash: '-'.bright.cyan })
 
 console.log (
