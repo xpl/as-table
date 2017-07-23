@@ -6,17 +6,17 @@ const assert  = require ('assert'),
 
 describe ('as-table', () => {
 
-    it ('array printing works', () => {
+    it.only ('array printing works', () => {
 
         var testData = [['qwe',       '123456789', 'zxcvbnm'],
                         ['qwerty',    '12',        'zxcvb'],
-                        ['qwertyiop', '1234567',   'z']]
+                        ['qwertyiop', '1234567'           ]]
 
         assert.equal (asTable (testData),
 
                         'qwe        123456789  zxcvbnm\n' +
                         'qwerty     12         zxcvb  \n' +
-                        'qwertyiop  1234567    z      ')
+                        'qwertyiop  1234567           ')
 
         assert.equal (asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (testData),
 
