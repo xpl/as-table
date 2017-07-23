@@ -1,13 +1,26 @@
 language: node_js
 node_js:
-- node
+- '6'
 script:
+- set -e
 - npm run lint
 - npm run lint-test
-- npm test
-after_success: npm run coverage
+- npm run test
+- npm run coveralls
+after_success:
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "Travis CI"
+- npm config set git-tag-version=false
+- NPM_VERSION=$(npm version patch)
+- git commit -a -m "${NPM_VERSION:1}" -m "[ci skip]"
+- git remote remove origin
+- git remote add origin https://${GITHUB_TOKEN}@github.com/xpl/string.bullet.git
+- git push origin HEAD:master
 deploy:
   provider: npm
   email: rocket.mind@gmail.com
   api_key:
-    secure: arKawgGrXQDVvc4Dr3iceQHgOmHbHaNBXlOJGzZhCUeIcfLHbFiAtk0r5qBSUoRNtB/wZCJYZUk5hDtGFjnrtJa6GZmLg8EZmAgq1JlOzuXcPgTXkPL51mkUj4xzeuqUZ2ywvpOQnxPJ0lIdrH7dA7PgSsu0XG+G0kHOGy6w8GW/gykz1CrkKN1NlAaCvPpY7lYr/xJQ51OIVVOwjseDRL2LBshLZcdxzH1pkZWmvCqCwz/M40ELHPTL1hEUpc4YXMXw1LaNumTVvRxLcScyZ7YpFdgef3+AQosmNOCgYUwyRPr5RmTEs7CypCS4UbtmBJDnJuwDBVC5ZfesVo5U1553y9I2vLE5nQxqJnsjWUjmgsWPGBLbgo7O5Gw+x3M2mKvUKJ/E6U+rG/BA240pcHJeCLwHKZlU1qeYKH6/Oec++/mWKIOElx05/bZDhSvJhHdwKSeVRhPEJXygiim0u6ZK+H5868bo76O1J3Aib/Ap4ir01gjAWSrrR5rdyUnPcZuSs4Ka4raVYxwSaeMyLLcVMjmWjeS6nHF5tSd0md9UW1YRIPGgl6vN7Kp+pld+QmlT7+/E+Yuqa2ZRxb+flw5ccHH/2Dg71hrr2iOCQSPF9N1HO08NeEmaRrB7F/xsdvY1iZQp31gyVB7i+/P8oox89g06rDn0ApS6i7NnQoY=
+    secure: eMNOnZTsQiel9M3irdYs2DEYvWpIF11N2MC+KGGvUZDZ/0J4BOSPiiozYEAJF5G0e22I8LwvDilIRMwhXZhUYIO9eiqjphdLUyXcw0U03HTDTlxv/e2fwqrHFcY8VpEwHguDNeW0OEict1pexiyQKus7Ex7X3GmgoxdTY5Afwn6pheWq808iwmr/osx5BIg5ueZ4rwmzxAwuK8u8JKz6MMLDVjjth1wmDjk/yis8kQmKLwiobah6GB16vvEVtbIvOiOmOjlifPV/vOqUNSW5YWJCjlY/XRI+579LUMbwP6Bdp36oysozxBlnZJZUaZZcRJwBlN+seJVXeTbLvFxu8YO6B7fqozREEs6zdigS0HpnVTUVHnbIhFKnDZ58FZjBjMXZ2emTqtWlgtHeb4uM+6n8cPWh/BxRbbc3jeUWVf6UgrRuWIYEiCRuWwK4XTOTsikXlNpLU/x+Bzz6QZaCPlF4175kUA4TZX2peW8ReJLuZwp1MHuWSoHiHx3I66yGat+wp1wwYEhnNZV+e6/YChqipJzt9biUxWK7DRkHNfE3mja9DyCP8WbVPwF+pHlHyCrd9z5cSsCCxavtHEm2Rbo+5s9RUrpRrJAMvgZFnR5tGlPcmYjFZPGDDgaKE4o+tTUxHzouR8xbbLMSBFU/PLiqA3tPlGys1LLoMqQvor0=
+env:
+  global:
+    secure: GPE3FvvZCfXf/eEYR5giH/uC12rQZWTvyx53iGSaTZIheblj+ch/D2bOoNaBA02QMD99xuYL596lAIfHeDW2XEkvxWhggoNPujNg+FaBcPtAXGrTy5xdvgbNFGT0Iy1j5i4ieli9v/LtGg7FjkKTfEd5ijXgvioA4QeCfKQPrSmIrHPAq/10RggPrSNOohKps4yRSAw+sDcI40PVcutwAgMptZ1PyZk8KME46seUYGgacNRtBYpy9zHCECQxvoGp5aS5pXyaxw6zjHRtX2wskzXpVbMWOqUKeOHSMqYDpoI/IVGZD33VLY0mz8pReZtH+4Ozy3dDGSghCmE6XTWVhYt8rB3HKpa3wWYBd9wpc7EWUf3xUUX5TUxI/lEaQ+Ho5J1tw6MThExTcSSzcJUs3yLybC832cGUEY4Tm8ga/ti44vqwR7xowWDypx413n3+KvpWBIlhoOiXuptAJT3hN08Luyd8+oU/RNsUX0cwB34mLw/6sgD+yonKDYnRS9klcbuiAUiL7/8s1jrAXFATCH/PDU6Ap3HGp1q/v3nLgdbyHSTJFPrqaf9FdzlRHHbQWqzNXD9Fk2GRdreGrsNia6EUWiS94Y/OZh95NUeWiWBaR2BvUX2t9i9RlqxWaizygoFYYYJJ4VZrLo5pYg5Namb0WdBmhgEFN4UHYe2m9U8=
