@@ -2,22 +2,17 @@
 
 const
 
+O = Object,
+
 { first, strlen } = require ('printable-characters'), // handles ANSI codes and invisible characters
 
 limit = (s, n) => (first (s, n - 1) + '…'),
 
-max = (a, b) => (a === undefined) ? b : ((b === undefined) ? a : Math.max (a, b)),
-
-arrmax = (a, b) => a.length > b.length ? a : b,
-
 asColumns = (rows, cfg_) => {
-
+    
     const
 
-        zip = (arrs, f) => arrs.reduce ((a, b) => b.map ((b, i) => [...a[i] || [], b]), [])
-                               .map (args => f (...args)),
-
-        //dasd = zip ([[1,2,3], [4,5,6], [7,8,9], [10,11,12]], (...args) => console.log (args)),
+        zip = (arrs, f) => arrs.reduce ((a, b) => b.map ((b, i) => [...a[i] || [], b]), []).map (args => f (...args)),
 
     /*  Convert cell data to string (converting multiline text to singleline) */
 
@@ -26,11 +21,11 @@ asColumns = (rows, cfg_) => {
     /*  Compute column widths (per row) and max widths (per column)     */
 
         cellWidths      = cells.map (r => r.map (strlen)),
-        maxWidths       = zip (cellWidths, max),
+        maxWidths       = zip (cellWidths, Math.max),
 
     /*  Default config     */
 
-        cfg             = Object.assign ({
+        cfg             = O.assign ({
                             delimiter: '  ',
                             minColumnWidths: maxWidths.map (x => 0),
                             maxTotalWidth: 0 }, cfg_),
@@ -58,7 +53,7 @@ asColumns = (rows, cfg_) => {
                                             : (limit (str, strlen (str) + w))).join (cfg.delimiter))
 },
 
-asTable = cfg => Object.assign (arr => {
+asTable = cfg => O.assign (arr => {
 
 /*  Print arrays  */
 
@@ -67,7 +62,7 @@ asTable = cfg => Object.assign (arr => {
 
 /*  Print objects   */
 
-    const colNames        = [...new Set ([].concat (...arr.map (Object.keys)))],
+    const colNames        = [...new Set ([].concat (...arr.map (O.keys)))],
           columns         = [colNames.map (cfg.title), ...arr.map (o => colNames.map (key => o[key]))],
           lines           = asColumns (columns, cfg)
 
@@ -75,7 +70,7 @@ asTable = cfg => Object.assign (arr => {
 
 }, cfg, {
 
-    configure: newConfig => asTable (Object.assign ({}, cfg, newConfig)),
+    configure: newConfig => asTable (O.assign ({}, cfg, newConfig)),
 })
 
 module.exports = asTable ({
@@ -85,5 +80,3 @@ module.exports = asTable ({
     title: String,
     dash: '-'
 })
-
-
