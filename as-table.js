@@ -1,14 +1,10 @@
 "use strict";
 
-const
+const O = Object
+    , { first, strlen } = require ('printable-characters') // handles ANSI codes and invisible characters
+    , limit = (s, n) => (first (s, n - 1) + '…')
 
-O = Object,
-
-{ first, strlen } = require ('printable-characters'), // handles ANSI codes and invisible characters
-
-limit = (s, n) => (first (s, n - 1) + '…'),
-
-asColumns = (rows, cfg_) => {
+const asColumns = (rows, cfg_) => {
     
     const
 
@@ -51,9 +47,9 @@ asColumns = (rows, cfg_) => {
                 zip ([a, b], (str, w) => (w >= 0)
                                             ? (str + ' '.repeat (w))
                                             : (limit (str, strlen (str) + w))).join (cfg.delimiter))
-},
+}
 
-asTable = cfg => O.assign (arr => {
+const asTable = cfg => O.assign (arr => {
 
 /*  Print arrays  */
 

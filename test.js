@@ -1,7 +1,7 @@
 "use strict";
 
 const assert  = require ('assert'),
-      asTable = require ('./as-table'),
+      asTable = require ('./build/as-table'),
       ansi    = require ('ansicolor').nice
 
 describe ('as-table', () => {

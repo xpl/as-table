@@ -1,10 +1,9 @@
 language: node_js
 node_js:
 - '6'
+- '4'
 script:
 - set -e
-- npm run lint
-- npm run lint-test
 - npm run test
 - npm run coveralls
 after_success:
