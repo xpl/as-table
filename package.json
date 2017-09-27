@@ -1,6 +1,6 @@
 {
   "name": "as-table",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "A simple function that print objects / arrays as ASCII tables. Supports ANSI styling — escape codes won't break the layout.",
   "main": "build/as-table.js",
   "scripts": {
