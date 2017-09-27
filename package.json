@@ -61,6 +61,6 @@
     "nyc": "^11.2.1"
   },
   "dependencies": {
-    "printable-characters": "^1.0.22"
+    "printable-characters": "^1.0.31"
   }
 }
