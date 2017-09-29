@@ -49,7 +49,7 @@ qwer… | 12    | zxc…
 qwer… | 1234… | z   
 ```
 
-## Providing custom object printer
+## Providing a custom object printer
 
 ```javascript
 asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) }) (data)
@@ -62,7 +62,7 @@ no   qwertyuiop  43
      null        44 
 ```
 
-## Obtaining pre-configured function
+## Obtaining a pre-configured function
 
 ```javascript
 asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' })
@@ -70,7 +70,7 @@ asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' 
 asTable (data)
 ```
 
-## Customizing title rendering and header separator
+## Customizing the title rendering and the header separator
 
 With string coloring by [`ansicolor`](https://github.com/xpl/ansicolor) (just for the demo purposes, any library will fit):
 
