@@ -9,8 +9,8 @@
     "babel": "babel as-table.js --source-maps inline --out-file ./build/as-table.js",
     "build": "npm run lint && npm run lint-test && npm run babel",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "test": "npm run build && nyc --reporter=html --reporter=text mocha --reporter spec",
-    "autotest": "mocha --reporter spec --watch"
+    "test": "npm run build && env AS_TABLE_TEST_FILE='./build/as-table' nyc --reporter=html --reporter=text mocha --reporter spec",
+    "autotest": "env AS_TABLE_TEST_FILE='./as-table' mocha --reporter spec --watch"
   },
   "repository": {
     "type": "git",

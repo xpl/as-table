@@ -1,7 +1,7 @@
 "use strict";
 
 const assert  = require ('assert'),
-      asTable = require ('./build/as-table'),
+      asTable = require (process.env.AS_TABLE_TEST_FILE),
       ansi    = require ('ansicolor').nice
 
 describe ('as-table', () => {
@@ -130,6 +130,20 @@ describe ('as-table', () => {
             'yes  abcde       42 \n' +
             'no   qwertyuiop  43 \n' +
             '     null        44 ')
+    })
+
+
+    it ('right align works', () => {
+        
+        var testData =
+            [ { foo: 1234.567,                bar: 12 },
+              { foo: '4.567'.bgMagenta.green, bar: 1234.456890 } ]
+
+        assert.equal (asTable.configure ({ right: true }) (testData),
+                        '     foo         bar\n' +
+                        '--------------------\n' +
+                        '1234.567          12\n' +
+                        '   ' + '4.567'.bgMagenta.green + '  1234.45689')
     })
 
     it ('ANSI coloring works', () => {

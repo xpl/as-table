@@ -45,7 +45,7 @@ const asColumns = (rows, cfg_) => {
 
         return zip ([cells, restCellWidths], (a, b) =>
                 zip ([a, b], (str, w) => (w >= 0)
-                                            ? (str + ' '.repeat (w))
+                                            ? (cfg.right ? (' '.repeat (w) + str) : (str + ' '.repeat (w)))
                                             : (limit (str, strlen (str) + w))).join (cfg.delimiter))
 }
 
@@ -74,5 +74,6 @@ module.exports = asTable ({
     maxTotalWidth: Number.MAX_SAFE_INTEGER,
     print: String,
     title: String,
-    dash: '-'
+    dash: '-',
+    right: false
 })
