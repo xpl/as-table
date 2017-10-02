@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/xpl/as-table.svg?branch=master)](https://travis-ci.org/xpl/as-table) [![Coverage Status](https://coveralls.io/repos/github/xpl/as-table/badge.svg)](https://coveralls.io/github/xpl/as-table) [![npm](https://img.shields.io/npm/v/as-table.svg)](https://npmjs.com/package/as-table) [![dependencies Status](https://david-dm.org/xpl/as-table/status.svg)](https://david-dm.org/xpl/as-table) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/xpl/as-table.svg)](https://scrutinizer-ci.com/g/xpl/as-table/?branch=master)
 
-A simple function that print objects and arrays as ASCII tables. Supports ANSI styling (escape codes won't break the layout), thanks to [`printable-characters`](https://github.com/xpl/printable-characters). **UPD:** now supports `right: true` for right alignment!
+A simple function that print objects and arrays as ASCII tables. Supports ANSI styling (escape codes won't break the layout), thanks to [`printable-characters`](https://github.com/xpl/printable-characters).
 
 ```bash
 npm install as-table
@@ -62,7 +62,7 @@ asTable.configure ({ right: true }) (data)
 qwertyiop    1234567        z
 ```
 
-## Providing custom object printer
+## Providing a custom object printer
 
 ```javascript
 asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) }) (data)
@@ -75,7 +75,7 @@ no   qwertyuiop  43
      null        44 
 ```
 
-## Obtaining pre-configured function
+## Obtaining a pre-configured function
 
 ```javascript
 asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' })
@@ -83,7 +83,7 @@ asTable = require ('as-table').configure ({ maxTotalWidth: 25, delimiter: ' | ' 
 asTable (data)
 ```
 
-## Customizing title rendering and header separator
+## Customizing the title rendering and the header separator
 
 With string coloring by [`ansicolor`](https://github.com/xpl/ansicolor) (just for the demo purposes, any library will fit):
 
