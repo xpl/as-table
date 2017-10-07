@@ -50,17 +50,17 @@
   },
   "homepage": "https://github.com/xpl/as-table",
   "devDependencies": {
-    "ansicolor": "^1.1.68",
+    "ansicolor": "^1.1.71",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
-    "coveralls": "^2.13.1",
-    "eslint": "^4.7.2",
+    "coveralls": "^2.13.3",
+    "eslint": "^4.8.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.3",
     "nyc": "^11.2.1"
   },
   "dependencies": {
-    "printable-characters": "^1.0.31"
+    "printable-characters": "^1.0.36"
   }
 }

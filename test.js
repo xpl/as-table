@@ -10,19 +10,21 @@ describe ('as-table', () => {
 
         var testData = [['qwe',       '123456789', 'zxcvbnm'],
                         ['qwerty',    '12',        'zxcvb'],
-                        ['qwertyiop', '1234567',   'z']]
-
+                        ['💩wertyiop', '1234567',   'z']]                        
+                        
         assert.equal (asTable (testData),
 
                         'qwe        123456789  zxcvbnm\n' +
                         'qwerty     12         zxcvb  \n' +
-                        'qwertyiop  1234567    z      ')
+                        '💩wertyiop  1234567    z      ')
 
         assert.equal (asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (testData),
 
                         'qwe   | 1234… | zxc…\n' +
                         'qwer… | 12    | zxc…\n' +
-                        'qwer… | 1234… | z   ')
+                        '💩wer… | 1234… | z   ')
+
+                        console.log (asTable.configure ({ maxTotalWidth: 22, delimiter: ' | ' }) (testData))
     })
 
     it ('object printing works', () => {
@@ -150,7 +152,7 @@ describe ('as-table', () => {
 
         const testData =
             [ { foo: true,  string: 'abcde',                             num: 42 },
-              { foo: false, string: 'qwertyuiop'.bgMagenta.green.bright, num: 43 } ]
+              { foo: false, string: '💩wertyuiop'.bgMagenta.green.bright, num: 43 } ]
 
         const d = ' | '.dim.cyan
         const _ = '-'.bright.cyan
@@ -164,9 +166,6 @@ describe ('as-table', () => {
             ['foo'.bright + '  ', 'string'.bright + '    ', 'num'.bright].join (d) + '\n' +
             _.repeat (24) + '\n' +
             ['true ', 'abcde     ', '42 '].join (d) + '\n' +
-            ['false', 'qwertyuiop'.bgMagenta.green.bright, '43 '].join (d))
+            ['false', '💩wertyuiop'.bgMagenta.green.bright, '43 '].join (d))
     })
 })
-
-
-
