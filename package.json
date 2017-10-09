@@ -1,7 +1,7 @@
 {
   "name": "as-table",
   "version": "1.0.30",
-  "description": "A simple function that print objects / arrays as ASCII tables. Handles ANSI styling and weird 💩 Unicode symbols – they won't break the layout.",
+  "description": "A simple function that print objects / arrays as ASCII tables. Handles ANSI styling and weird 💩 Unicode emoji symbols – they won't break the layout.",
   "main": "build/as-table.js",
   "scripts": {
     "lint": "eslint as-table.js",
