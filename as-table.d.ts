@@ -10,9 +10,12 @@ declare namespace asTable {
         title(value: string): string
     }
     type OmitPrint<T> = Pick<T, Exclude<keyof T, 'print'>> & {print: undefined}
+    type ValidValueType<O, T> = {
+      [P in keyof O]: T;
+    }
     interface Formatter<T> extends Readonly<Config<T>> {
         (rows: T[][]): string
-        (objects: {[column: string]: T | undefined}[]): string
+        <O extends ValidValueType<O, T>>(objects: O[]): string
         configure(cfg: Partial<OmitPrint<Config<any>>>): Formatter<T>
         configure<T>(cfg: Partial<Config<T>>): Formatter<T>
     }
