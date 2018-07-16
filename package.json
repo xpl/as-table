@@ -1,6 +1,6 @@
 {
   "name": "as-table",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "A simple function that print objects / arrays as ASCII tables. Handles ANSI styling and weird 💩 Unicode emoji symbols – they won't break the layout.",
   "main": "build/as-table.js",
   "typings": "./as-table.d.ts",
