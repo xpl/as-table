@@ -3,7 +3,9 @@ declare function asTable(rows: any[][]): string
 declare function asTable(objects: {[column: string]: any}[]): string
 declare namespace asTable {
     interface Config<T> {
-        maxTotalWidth: Number
+        maxTotalWidth: number
+        minColumnWidths?: number[]
+        delimiter?: string
         dash: string
         right: boolean
         print(value: T): string
