@@ -13,7 +13,7 @@ after_success:
 - git commit -a -m "${NPM_VERSION:1}" -m "[ci skip]"
 - git remote remove origin
 - git remote add origin https://${GITHUB_TOKEN}@github.com/xpl/as-table.git
-- git push origin HEAD:master
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then git push origin HEAD:master
 deploy:
   provider: npm
   email: rocket.mind@gmail.com
