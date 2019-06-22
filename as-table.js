@@ -12,7 +12,7 @@ const asColumns = (rows, cfg_) => {
 
     /*  Convert cell data to string (converting multiline text to singleline) */
 
-        cells           = rows.map (r => r.map (c => (c === undefined) ? '' : cfg_.print (c).replace (/\n/g, '\\n'))),
+        cells           = rows.map (r => r.map (c => c.replace (/\n/g, '\\n'))),
 
     /*  Compute column widths (per row) and max widths (per column)     */
 
@@ -54,12 +54,26 @@ const asTable = cfg => O.assign (arr => {
 /*  Print arrays  */
 
     if (arr[0] && Array.isArray (arr[0]))
-        return asColumns (arr, cfg).join ('\n')
+        return asColumns (
+            arr.map (
+                r => r.map (
+                    (c, i) => (c === undefined) ? '' : cfg.print(c, i)
+                )
+            ),
+            cfg
+        ).join ('\n')
 
 /*  Print objects   */
 
     const colNames        = [...new Set ([].concat (...arr.map (O.keys)))],
-          columns         = [colNames.map (cfg.title), ...arr.map (o => colNames.map (key => o[key]))],
+          columns         = [
+            colNames.map (cfg.title),
+            ...arr.map (
+                o => colNames.map (
+                    key => (o[key] === undefined) ? '' : cfg.print(o[key], key)
+                )
+            )
+          ],
           lines           = asColumns (columns, cfg)
 
     return [lines[0], cfg.dash.repeat (strlen (lines[0])), ...lines.slice (1)].join ('\n')
