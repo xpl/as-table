@@ -134,6 +134,58 @@ describe ('as-table', () => {
             '     null        44 ')
     })
 
+    it ('custom printer works with object titles', () => {
+
+        var testData =
+            [ { foo: true,  string: 'abcde',      num: 42, timestamp: 1561202591572 },
+              { foo: false, string: 'qwertyuiop', num: 43, timestamp: 1558524240034 },
+              {             string:  null,        num: 44, timestamp: 1555932240034 } ]
+
+        const formats = asTable.configure ({
+            print: (obj, title) => {
+                if (title === 'foo') {
+                    return obj ? 'yes' : 'no';
+                }
+                if (title === 'timestamp') {
+                    return new Date(obj).toGMTString();
+                }
+                return String(obj);
+            }
+        })
+
+        assert.equal (formats (testData),
+
+            'foo  string      num  timestamp                    \n' +
+            '---------------------------------------------------\n' +
+            'yes  abcde       42   Sat, 22 Jun 2019 11:23:11 GMT\n' +
+            'no   qwertyuiop  43   Wed, 22 May 2019 11:24:00 GMT\n' +
+            '     null        44   Mon, 22 Apr 2019 11:24:00 GMT')
+    })
+
+    it ('custom printer works with array keys', () => {
+
+        var testData =
+            [ [ true,  'abcde',      42, 1561202591572 ],
+              [ false, 'qwertyuiop', 43, 1558524240034 ] ]
+
+        const formats = asTable.configure ({
+            print: (obj, index) => {
+                if (index === 0) {
+                    return obj ? 'yes' : 'no';
+                }
+                if (index === 3) {
+                    return new Date(obj).toGMTString();
+                }
+                return String(obj);
+            }
+        })
+
+        assert.equal (formats (testData),
+
+            'yes  abcde       42  Sat, 22 Jun 2019 11:23:11 GMT\n' +
+            'no   qwertyuiop  43  Wed, 22 May 2019 11:24:00 GMT')
+    })
+
 
     it ('right align works', () => {
         

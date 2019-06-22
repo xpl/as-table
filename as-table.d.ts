@@ -8,7 +8,7 @@ declare namespace asTable {
         delimiter?: string
         dash: string
         right: boolean
-        print(value: T): string
+        print(value: T, key?: string | number): string
         title(value: string): string
     }
     type OmitPrint<T> = Pick<T, Exclude<keyof T, 'print'>> & {print: undefined}
