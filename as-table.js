@@ -53,28 +53,24 @@ const asTable = cfg => O.assign (arr => {
 
 /*  Print arrays  */
 
-    if (arr[0] && Array.isArray (arr[0]))
-        return asColumns (
-            arr.map (
-                r => r.map (
-                    (c, i) => (c === undefined) ? '' : cfg.print(c, i)
-                )
-            ),
-            cfg
-        ).join ('\n')
+    if (arr[0] && Array.isArray (arr[0])) {
+        return asColumns (arr.map (r => r.map (
+                                                (c, i) => (c === undefined) ? '' : cfg.print (c, i)
+                                              )
+                                  ),
+                          cfg).join ('\n')
+    }
 
 /*  Print objects   */
 
-    const colNames        = [...new Set ([].concat (...arr.map (O.keys)))],
-          columns         = [
-            colNames.map (cfg.title),
-            ...arr.map (
-                o => colNames.map (
-                    key => (o[key] === undefined) ? '' : cfg.print(o[key], key)
-                )
-            )
-          ],
-          lines           = asColumns (columns, cfg)
+    const colNames = [...new Set ([].concat (...arr.map (O.keys)))],
+          columns  = [colNames.map (cfg.title),
+                      ...arr.map (o => colNames.map (
+                                           key => (o[key] === undefined) ? '' : cfg.print (o[key], key)
+                                       )
+                                 )
+                     ],
+          lines    = asColumns (columns, cfg)
 
     return [lines[0], cfg.dash.repeat (strlen (lines[0])), ...lines.slice (1)].join ('\n')
 
