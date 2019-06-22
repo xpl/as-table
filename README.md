@@ -65,7 +65,7 @@ qwertyiop    1234567        z
 ## Providing a custom object printer
 
 ```javascript
-asTable.configure ({ print: obj => (typeof obj === 'boolean') ? (obj ? 'yes' : 'no') : String (obj) }) (data)
+asTable.configure ({ print: x => (typeof x === 'boolean') ? (x ? 'yes' : 'no') : String (x) }) (data)
 ```
 ```
 foo  string      num
@@ -73,6 +73,20 @@ foo  string      num
 yes  abcde       42 
 no   qwertyuiop  43 
      null        44 
+```
+
+The callback also receives a field name (in case of objects) or a column index (in case of arrays):
+
+```javascript
+asTable = require ('as-table').configure ({
+    print (x, k) {
+        if (k === 'timestamp') return new Date (obj).toGMTString()
+        return String (k)
+    }
+})
+
+asTable ([ { name: 'A', timestamp: 1561202591572 },
+           { name: 'B', timestamp: 1558524240034 } ])
 ```
 
 ## Obtaining a pre-configured function
