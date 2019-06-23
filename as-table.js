@@ -72,7 +72,7 @@ const asTable = cfg => O.assign (arr => {
                      ],
           lines    = asColumns (columns, cfg)
 
-    return ((cfg.dash) ? [lines[0], cfg.dash.repeat (strlen (lines[0])), ...lines.slice (1)] : lines).join ('\n')
+    return (cfg.dash ? [lines[0], cfg.dash.repeat (strlen (lines[0])), ...lines.slice (1)] : lines).join ('\n')
 
 }, cfg, {
 
