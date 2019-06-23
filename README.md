@@ -80,8 +80,8 @@ The callback also receives a field name (in case of objects) or a column index (
 ```javascript
 asTable = require ('as-table').configure ({
     print (x, k) {
-        if (k === 'timestamp') return new Date (obj).toGMTString()
-        return String (k)
+        if (k === 'timestamp') return new Date (x).toGMTString()
+        return String (x)
     }
 })
 
